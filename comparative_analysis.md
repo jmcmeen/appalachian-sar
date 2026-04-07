@@ -1,6 +1,6 @@
-# Comparative Analysis: NLS vs. Log-Linear SAR Fitting
+# Southern Appalachian Amphibians: Updated Comparative Analysis using NLS vs. Log-Linear SAR Fitting
 
-A companion to [`analysis_updates.ipynb`](analysis_updates.ipynb), comparing the nonlinear least squares (NLS) results from the [`sars`](https://pypi.org/project/sars/) Python library against the original log-linear OLS calculations published in Stout, Jessee & McMeen (2025). Both the **nested model** (n = 7) and the **island model** (n = 26) are analyzed.
+A companion to [`analysis_updates.ipynb`](https://github.com/jmcmeen/appalachian-sar/blob/main/analysis_updates.ipynb), comparing the nonlinear least squares (NLS) results from the [`sars`](https://pypi.org/project/sars/) Python library against the original log-linear OLS calculations published in Stout, Jessee & McMeen (2025). Both the **nested model** (n = 7) and the **island model** (n = 26) are analyzed.
 
 ---
 
