@@ -1,4 +1,4 @@
-# Southern Appalachian Amphibians: Updated Comparative Analysis using NLS vs. Log-Linear SAR Fitting
+# Southern Appalachian Amphibians: Updated Comparative Analysis Using NLS vs. Log-Linear SAR Fitting
 
 A companion to [`analysis_updates.ipynb`](https://github.com/jmcmeen/appalachian-sar/blob/main/analysis_updates.ipynb), comparing the nonlinear least squares (NLS) results from the [`sars`](https://pypi.org/project/sars/) Python library against the original log-linear OLS calculations published in Stout, Jessee & McMeen (2025). Both the **nested model** (n = 7) and the **island model** (n = 26) are analyzed.
 
@@ -22,25 +22,25 @@ This minimizes squared residuals in the original species-count scale and assumes
 
 ### Nested Model (n = 7)
 
-| Group | Method | c / C | z | R² |
-|---|---|---|---|---|
-| Amphibians | Original (log-linear) | 18.87 | 0.1222 | 0.9667 |
-| Amphibians | `sars` NLS | 11.11 | 0.1779 | 0.9826 |
-| Frogs | Original (log-linear) | 9.34 | 0.0598 | 0.9279 |
-| Frogs | `sars` NLS | 8.22 | 0.0753 | 0.9281 |
-| Salamanders | Original (log-linear) | 8.36 | 0.1734 | 0.9924 |
-| Salamanders | `sars` NLS | 5.33 | 0.2192 | 0.9951 |
+| Group       | Method                | c / C | z      | R²     |
+| ----------- | --------------------- | ----- | ------ | ------ |
+| Amphibians  | Original (log-linear) | 18.87 | 0.1222 | 0.9667 |
+| Amphibians  | `sars` NLS            | 11.11 | 0.1779 | 0.9826 |
+| Frogs       | Original (log-linear) | 9.34  | 0.0598 | 0.9279 |
+| Frogs       | `sars` NLS            | 8.22  | 0.0753 | 0.9281 |
+| Salamanders | Original (log-linear) | 8.36  | 0.1734 | 0.9924 |
+| Salamanders | `sars` NLS            | 5.33  | 0.2192 | 0.9951 |
 
 ### Island Model (n = 26)
 
-| Group | Method | c / C | z | R² |
-|---|---|---|---|---|
-| Amphibians | Original (log-linear) | 13.92 | 0.1079 | 0.7572 |
-| Amphibians | `sars` NLS | 12.88 | 0.1272 | 0.7253 |
-| Frogs | Original (log-linear) | 4.28 | 0.1338 | 0.6582 |
-| Frogs | `sars` NLS | 4.98 | 0.1094 | 0.6549 |
-| Salamanders | Original (log-linear) | 8.95 | 0.1043 | 0.5641 |
-| Salamanders | `sars` NLS | 7.85 | 0.1383 | 0.5812 |
+| Group       | Method                | c / C | z      | R²     |
+| ----------- | --------------------- | ----- | ------ | ------ |
+| Amphibians  | Original (log-linear) | 13.92 | 0.1079 | 0.7572 |
+| Amphibians  | `sars` NLS            | 12.88 | 0.1272 | 0.7253 |
+| Frogs       | Original (log-linear) | 4.28  | 0.1338 | 0.6582 |
+| Frogs       | `sars` NLS            | 4.98  | 0.1094 | 0.6549 |
+| Salamanders | Original (log-linear) | 8.95  | 0.1043 | 0.5641 |
+| Salamanders | `sars` NLS            | 7.85  | 0.1383 | 0.5812 |
 
 ### Direction of Parameter Shifts
 
@@ -56,21 +56,21 @@ Canonical z-value ranges from Rosenzweig (1995) and Drakare et al. (2006) are 0.
 
 ### Nested Model
 
-| Group | z (Original) | z (NLS) | Range Context |
-|---|---|---|---|
-| Amphibians | 0.1222 | 0.1779 | Mainland/nested (0.10–0.20) |
-| Frogs | 0.0598 | 0.0753 | Below canonical range |
-| Salamanders | 0.1734 | 0.2192 | NLS pushes above 0.20 |
+| Group       | z (Original) | z (NLS) | Range Context               |
+| ----------- | ------------ | ------- | --------------------------- |
+| Amphibians  | 0.1222       | 0.1779  | Mainland/nested (0.10–0.20) |
+| Frogs       | 0.0598       | 0.0753  | Below canonical range       |
+| Salamanders | 0.1734       | 0.2192  | NLS pushes above 0.20       |
 
 The nested model's z-values are broadly consistent with the mainland/nested range, as expected from the concentric sampling design (wetland pond ⊂ Steele Creek Park ⊂ Sullivan Co. ⊂ NE Tennessee ⊂ Eastern Tennessee ⊂ broader southern Appalachia). The frog z is notably low under both methods, reflecting the relatively flat frog richness across scales — frog diversity saturates quickly and adds few species even as area increases by orders of magnitude. Salamander z under NLS (0.2192) exceeds the canonical mainland ceiling of 0.20, approaching true-island territory. This likely reflects the strong elevational partitioning and high endemism among plethodontid salamanders, which makes even nested areas behave somewhat like ecological islands for this group.
 
 ### Island Model
 
-| Group | z (Original) | z (NLS) | Range Context |
-|---|---|---|---|
-| Amphibians | 0.1079 | 0.1272 | Mainland/nested (0.10–0.20) |
-| Frogs | 0.1338 | 0.1094 | Mainland/nested |
-| Salamanders | 0.1043 | 0.1383 | Mainland/nested |
+| Group       | z (Original) | z (NLS) | Range Context               |
+| ----------- | ------------ | ------- | --------------------------- |
+| Amphibians  | 0.1079       | 0.1272  | Mainland/nested (0.10–0.20) |
+| Frogs       | 0.1338       | 0.1094  | Mainland/nested             |
+| Salamanders | 0.1043       | 0.1383  | Mainland/nested             |
 
 All island z-values fall within the mainland/nested range under both methods. This is somewhat surprising given that the island sites are independent localities (not concentric nested areas), which typically produce higher z-values. However, the island sites span a broad geographic and elevational range within a single ecoregion, and many share species pools. The result is consistent with the "mixed nested + island" design noted by the original authors.
 
