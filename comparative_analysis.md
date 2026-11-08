@@ -116,9 +116,11 @@ No breakpoints are detected for any group — the analysis selects the simple li
 
 ### Island
 
-For amphibians and salamanders, the threshold analysis selects the **ContOne** (continuous two-slope) model with a breakpoint at approximately log₁₀(area) ≈ 6.9 (corresponding to ~8,000,000 km², well outside the observed range). This is an extrapolation artifact and should not be interpreted as evidence of a genuine small-island effect. For frogs, the simple linear model is selected.
+For amphibians and salamanders, the threshold analysis selects the **ContOne** (continuous two-slope) model, with the breakpoint at ln(area) ≈ 6.91 for both groups. `sar_threshold()` fits on the natural log of area, so that is about 1,000 km², inside the observed range (0.008–2,114 km²): six of the 26 sites lie above it (Fannin Co. GA, Polk Co. TN, Hamilton Co. TN, Sevier Co. TN, Buncombe Co. NC and Great Smokies NP). ContOne beats the linear model by about 11 AICc units for both groups (157.4 vs 168.9 for amphibians, 153.3 vs 164.3 for salamanders), so the breakpoint has real support.
 
-At n = 26, the island dataset is approaching the sample size where meaningful breakpoint detection becomes possible, but the current data do not support a small-island effect for any group.
+It is not a small-island effect. The slope *steepens* above the breakpoint, from 1.7 to 23 amphibian species per unit of ln(area) and from 1.0 to 21 for salamanders, whereas a small-island effect flattens the curve below a threshold; that is what the ZslopeOne model tests for, and it is not selected for any group. The steep upper segment rests on six county- and park-scale sites. Five of them are the five richest sites for amphibians as a whole (for salamanders, four of the five richest; Hamilton Co. TN, with 19, ranks below Unicoi Co. TN and Watauga Co. NC), and the sixth, Fannin Co. GA, is the suppressed southern-edge county noted under the salamander anomaly, so the segment is better read as the signature of those sites than as a general property of the relationship. For frogs, the simple linear model is selected.
+
+With n = 26 the island dataset can support a one-breakpoint model, as it does here; what it does not show, for any group, is a small-island effect.
 
 ## Model Averaging & Bootstrap CI
 
@@ -168,7 +170,7 @@ The paper's central comparison — nested vs. island models — reveals consiste
 
 6. The island dataset (n = 26) supports full AICc-based model averaging and bootstrap confidence intervals, representing a significant analytical advance over the original log-linear approach.
 
-7. No small-island effect (breakpoint) is statistically supported for either dataset at current sample sizes.
+7. No small-island effect is supported for either dataset. The island amphibian and salamander fits do support a breakpoint near 1,000 km², above which richness climbs steeply across the six largest, county- and park-scale sites: a large-area steepening, not a small-island flattening.
 
 8. Averaging the nested and island model predictions remains a sound practical approach for estimating amphibian diversity at unstudied localities within the southern Appalachian ecoregion.
 
