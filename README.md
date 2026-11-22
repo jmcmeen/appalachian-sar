@@ -8,22 +8,25 @@ Artifacts and updated analyses from:
 
 The southern Appalachian ecoregion is the global biodiversity hotspot for salamander genera, with high rates of endemism among amphibians driven by elevational gradients and limited dispersal ability. Despite a rich history of naturalist investigations, no quantitative species–area relationship (SAR) for amphibians had been established for the region until this study.
 
-Stout et al. (2025) built two SAR models using the classical power function S = CA^z fitted via log-linear OLS regression. The **nested model** uses seven concentric land areas ranging from a single wetland pond (0.0018 km²) to all of southern Appalachia (178,758 km²). The **island model** uses 26 independent, well-surveyed sites (parks, counties, and other localities) within the study area. Both models demonstrate that land area is a significant predictor of amphibian species richness, with the nested model producing stronger correlations (R² = 0.93–0.99) than the island model (R² = 0.56–0.76). The paper recommends averaging the two models for practical prediction at unstudied localities.
+Stout et al. (2025) built two SAR models using the classical power function S = CA^z fitted via log-linear OLS regression. The **nested model** uses seven concentric land areas ranging from a single wetland pond (0.0018 km²) to all of southern Appalachia (178,758 km²). The **island model** uses 26 separate, well-surveyed sites (parks, counties, and other localities) within the study area. Both models demonstrate that land area is a significant predictor of amphibian species richness, with the nested model producing stronger correlations (R² = 0.93–0.99) than the island model (R² = 0.56–0.76). The paper recommends averaging the two models for practical prediction at unstudied localities.
 
 ## Repository Contents
 
 ```text
 data/
   nested.csv                    Nested area-richness data (7 concentric areas, Appendix 1)
-  island.csv                    Island area-richness data (26 independent sites, Appendix 2)
+  island.csv                    Island area-richness data (26 sites, Appendix 2)
+  README.md                     Data dictionary and provenance
 publication/
-  Stout_et_al_2025.pdf          Published paper
+  JNAH_2025_Stout_et_al.pdf     Published paper
+  Stout_et_al_2025.md           The paper as Markdown
   figures/                      Figures from the publication
 analysis.ipynb                  Reproduction of the original paper's SAR analysis
 analysis_updates.ipynb          NLS reanalysis using the sars library
 comparative_analysis.md         Full methodological comparison write-up
 README.md                       This file
 requirements.txt                Python dependencies (includes sars)
+LICENSE                         MIT License
 ```
 
 ## Data
@@ -44,7 +47,7 @@ Seven concentric areas of increasing size, each encompassing all smaller areas:
 
 ### Island Model (Appendix 2)
 
-Twenty-six independent sites within the southern Appalachian ecoregion, ranging from John's Bog (0.0081 km²) to Great Smoky Mountains NP (2,114 km²). Sites include national and state parks, national recreation areas, counties, and other well-surveyed localities across Tennessee, North Carolina, West Virginia, Virginia, and Georgia. See `data/island.csv` for the full dataset.
+Twenty-six sites within the southern Appalachian ecoregion, ranging from John's Bog (0.0081 km²) to Great Smoky Mountains NP (2,114 km²). Sites include national and state parks, national recreation areas, counties, and other well-surveyed localities across Tennessee, North Carolina, West Virginia, Virginia, and Georgia; a few lie within others (see [`data/README.md`](data/README.md)). See `data/island.csv` for the full dataset.
 
 ## Analysis
 
@@ -69,7 +72,7 @@ The updated notebook (`analysis_updates.ipynb`) reanalyzes both datasets using t
 4. **Residual diagnostics** — 2×3 panel grid across both datasets
 5. **Multi-model comparison** across all 20 SAR models supported by `sars`, for both datasets
 6. **Threshold analysis** testing for breakpoints / small-island effects
-7. **Model averaging** and **bootstrap confidence intervals** (fully available for the island dataset at n = 26)
+7. **Model averaging** (AICc, with BIC weights for comparison), and **bootstrap confidence intervals** for the island dataset (n = 26), which treat the sites as independent and are likely too narrow
 8. **Predictive comparison** of NLS vs. original log-linear predictions at reference areas
 
 The full methodological discussion — parameter shifts between fitting methods, the salamander anomaly in the island model, nested vs. island structural comparison, z-value interpretation, and ecological implications — is in [`comparative_analysis.md`](comparative_analysis.md).

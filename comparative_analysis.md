@@ -90,13 +90,13 @@ This contrasts sharply with the nested model, where salamanders show the stronge
 
 ### AICc Considerations
 
-With n = 7 (nested), the AICc correction term 2k(k+1)/(n−k−1) is large for 3-parameter models (k = 4 including σ) but still finite since n > k + 1. Results for 3-parameter models on the nested data should be interpreted cautiously — the additional parameter may produce artificially high R² with only 3 residual degrees of freedom.
+With n = 7 (nested), the AICc correction term 2k(k+1)/(n−k−1) is large for 3-parameter models (k = 4 including σ) but still finite since n > k + 1. Results for 3-parameter models on the nested data should be interpreted cautiously — the additional parameter may produce artificially high R² with only 4 residual degrees of freedom (7 points less 3 parameters; σ is estimated from the residuals).
 
-With n = 26 (island), AICc is well-defined for all models, and model averaging and bootstrap confidence intervals are fully available.
+With n = 26 (island), AICc is well-defined for all models, and model averaging is fully available; the bootstrap intervals come with a caveat about independence (see below).
 
 ### Nested Rankings
 
-For all three nested groups, the power model provides an excellent fit. The 3-parameter powerR model slightly outperforms by BIC (amphibians: powerR R² = 0.9965 vs. power R² = 0.9826), but the improvement is marginal and comes at the cost of an additional parameter on only 7 data points. The 2-parameter power model is the most defensible choice.
+For all three nested groups, the power model provides an excellent fit (R² = 0.93–0.995). Which model ranks first depends on the criterion. By AICc, the power model leads for frogs and salamanders, and the three-parameter epm1 for amphibians (R² = 0.998 against the power model's 0.983). By BIC, whose penalty for an extra parameter is much smaller than AICc's at n = 7 (about 2 against about 14), epm1 leads for all three groups, by a wide margin. The choice between them is a choice of penalty: on 7 points, a third parameter raises R² only slightly (to 0.988–0.999), and AICc's small-sample correction, designed for exactly this case, judges that not worth it except for amphibians. The 2-parameter power model is the more defensible choice for frogs and salamanders, and the evidence for amphibians is split.
 
 ### Island Rankings
 
@@ -112,13 +112,13 @@ For island **salamanders**, the linear model (R² = 0.6519, BIC = 157.83) outper
 
 ### Nested
 
-No breakpoints are detected for any group — the analysis selects the simple linear model in all cases. With n = 7, there is insufficient data to support piecewise structure.
+The analysis selects the simple linear model for every group, by AICc. That choice comes from AICc's small-sample correction rather than from the fits: by AIC and BIC the one-breakpoint ContOne model is far ahead (for amphibians, AIC 42.2 against 63.4 for the line), but with n = 7 the correction for its extra parameters is large enough to reverse the order (AICc 102.2 against 71.4). Seven concentric areas are too few to test piecewise structure, and the nested design isn't suited to it: no breakpoint is detected, which is not evidence that none exists.
 
 ### Island
 
-For amphibians and salamanders, the threshold analysis selects the **ContOne** (continuous two-slope) model, with the breakpoint at ln(area) ≈ 6.91 for both groups. `sar_threshold()` fits on the natural log of area, so that is about 1,000 km², inside the observed range (0.008–2,114 km²): six of the 26 sites lie above it (Fannin Co. GA, Polk Co. TN, Hamilton Co. TN, Sevier Co. TN, Buncombe Co. NC and Great Smokies NP). ContOne beats the linear model by about 11 AICc units for both groups (157.4 vs 168.9 for amphibians, 153.3 vs 164.3 for salamanders), so the breakpoint has real support.
+For amphibians and salamanders, the threshold analysis selects the **ContOne** (continuous two-slope) model, with the breakpoint at ln(area) ≈ 6.92 for both groups. `sar_threshold()` fits on the natural log of area, so that is about 1,000 km², inside the observed range (0.008–2,114 km²): six of the 26 sites lie above it (Fannin Co. GA, Polk Co. TN, Hamilton Co. TN, Sevier Co. TN, Buncombe Co. NC and Great Smokies NP). ContOne beats the linear model by about 11 AICc units for both groups (157.3 vs 168.9 for amphibians, 153.3 vs 164.3 for salamanders), so the breakpoint has real support.
 
-It is not a small-island effect. The slope *steepens* above the breakpoint, from 1.7 to 23 amphibian species per unit of ln(area) and from 1.0 to 21 for salamanders, whereas a small-island effect flattens the curve below a threshold; that is what the ZslopeOne model tests for, and it is not selected for any group. The steep upper segment rests on six county- and park-scale sites. Five of them are the five richest sites for amphibians as a whole (for salamanders, four of the five richest; Hamilton Co. TN, with 19, ranks below Unicoi Co. TN and Watauga Co. NC), and the sixth, Fannin Co. GA, is the suppressed southern-edge county noted under the salamander anomaly, so the segment is better read as the signature of those sites than as a general property of the relationship. For frogs, the simple linear model is selected.
+It is not a small-island effect. The slope *steepens* above the breakpoint, from 1.7 to 24 amphibian species per unit of ln(area) and from 1.0 to 21 for salamanders, whereas a small-island effect flattens the curve below a threshold; that is what the ZslopeOne model tests for, and it is not selected for any group. The steep upper segment rests on six county- and park-scale sites. Five of them are the five richest sites for amphibians as a whole (for salamanders, four of the five richest; Hamilton Co. TN, with 19, ranks below Unicoi Co. TN, Watauga Co. NC and New River Gorge NP WV, all three with 21), and the sixth, Fannin Co. GA, is the suppressed southern-edge county noted under the salamander anomaly, so the segment is better read as the signature of those sites than as a general property of the relationship. For frogs, the simple linear model is selected.
 
 With n = 26 the island dataset can support a one-breakpoint model, as it does here; what it does not show, for any group, is a small-island effect.
 
@@ -126,13 +126,23 @@ With n = 26 the island dataset can support a one-breakpoint model, as it does he
 
 ### Nested (n = 7)
 
-With n = 7, model averaging via `sars.sar_average()` may produce Akaike weights that are dominated by a single model due to the large AICc corrections. Results should be treated as preliminary.
+Not every group's weights are dominated by a single model, and the weights depend heavily on the criterion, because AICc's small-sample correction is large at n = 7. The three largest weights under each:
+
+| Group | Akaike (AICc) weights | BIC (Schwarz) weights |
+| --- | --- | --- |
+| Amphibians | epm1 0.62, power 0.30, powerR 0.07 | epm1 0.89, powerR 0.11, p2 0.002 |
+| Frogs | power 0.51, epm1 0.27, powerR 0.16 | epm1 0.61, powerR 0.36, p2 0.01 |
+| Salamanders | power 0.91, epm1 0.07, powerR 0.01 | epm1 0.74, powerR 0.13, epm2 0.05 |
+
+The power model's BIC weight is 0.001–0.02. Two cases come close to a single model, salamanders under AICc (power 0.91) and amphibians under BIC (epm1 0.89), and they are different models. Where AICc and BIC disagree this sharply, the averaged curve depends on how hard extra parameters are penalised, so the nested averages should be treated as preliminary.
 
 ### Island (n = 26)
 
-With n = 26, AICc-based model averaging and bootstrap confidence intervals are fully applicable. The notebook attempts both for each group. The Akaike weights indicate how much each of the 20 candidate models contributes to the information-theoretic ensemble prediction. Bootstrap CIs (500 replicates, 95% confidence) provide uncertainty bands around the model-averaged curve.
+With n = 26 the two criteria broadly agree, and the weights are spread across many models (the top model's AICc weight is 0.20–0.34: linear for amphibians and salamanders, power for frogs). Model averaging is fully applicable here, and the notebook shows the averaged curve for each group.
 
-These tools represent a substantial analytical advance over the original log-linear approach, which produced only a single best-fit line with no formal uncertainty quantification.
+The bootstrap intervals (500 resamples, 95% confidence) need a caveat. `sars.bootstrap_ci()` resamples sites with replacement, treating them as independent draws, and they aren't fully: some sites lie within others (UT Arboretum within Anderson Co. TN, Elk Knob SP largely within Watauga Co. NC, part of Great Smokies NP within Sevier Co. TN), and the sites draw on overlapping regional species pools. The intervals are therefore likely too narrow and should be read as rough. (The nested areas, concentric by design, can't be bootstrapped in the usual sense at all, and the notebook doesn't try.) A design-aware method, resampling by region for instance, would be needed for intervals with their usual meaning. Some resamples were dropped because their model average couldn't be computed: 3 of 500 for amphibians, 49 for frogs and 4 for salamanders (the notebook reports the counts). Those are not a random tenth of the frog resamples but the ones whose fits failed, which may narrow the frog interval further.
+
+Model averaging and these intervals go beyond the original log-linear approach, which produced a single best-fit line with no formal uncertainty quantification, but the intervals' assumptions limit how far they can be taken.
 
 ## Nested vs. Island: Structural Comparison
 
@@ -168,7 +178,7 @@ The paper's central comparison — nested vs. island models — reveals consiste
 
 5. All z-values fall within or near the expected mainland/nested range (0.10–0.20), except for nested salamanders (NLS z = 0.22) which approach true-island values — consistent with the high endemism and elevational partitioning of plethodontid salamanders.
 
-6. The island dataset (n = 26) supports full AICc-based model averaging and bootstrap confidence intervals, representing a significant analytical advance over the original log-linear approach.
+6. The island dataset (n = 26) supports AICc-based model averaging; its bootstrap intervals assume independent sites, which the data only partly satisfy, so they are likely too narrow. On the nested data (n = 7), the averaging weights change sharply between AICc and BIC.
 
 7. No small-island effect is supported for either dataset. The island amphibian and salamander fits do support a breakpoint near 1,000 km², above which richness climbs steeply across the six largest, county- and park-scale sites: a large-area steepening, not a small-island flattening.
 
