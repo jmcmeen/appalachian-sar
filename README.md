@@ -69,7 +69,7 @@ The updated notebook (`analysis_updates.ipynb`) reanalyzes both datasets using t
 4. **Residual diagnostics** — 2×3 panel grid across both datasets
 5. **Multi-model comparison** across all 20 SAR models supported by `sars`, for both datasets
 6. **Threshold analysis** testing for breakpoints / small-island effects
-7. **Model averaging** and **bootstrap confidence intervals** (fully available for the island dataset at n = 26)
+7. **Model averaging** (AICc, with BIC weights for comparison), and **bootstrap confidence intervals** for the island dataset (n = 26), which treat the sites as independent and are likely too narrow
 8. **Predictive comparison** of NLS vs. original log-linear predictions at reference areas
 
 The full methodological discussion — parameter shifts between fitting methods, the salamander anomaly in the island model, nested vs. island structural comparison, z-value interpretation, and ecological implications — is in [`comparative_analysis.md`](comparative_analysis.md).
