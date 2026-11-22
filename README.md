@@ -2,7 +2,7 @@
 
 Artifacts and updated analyses from:
 
-> **Stout, J.B., Jessee, L.D., & McMeen, J.N. (2025).** Nested and island models for determining the species-area relationship of southern Appalachian amphibians. *Journal of North American Herpetology*, 2025(1), 1–7. [https://doi.org/10.17161/jnah.v2025i1.21557](https://doi.org/10.17161/jnah.v2025i1.21557)
+> **Stout, J.B., Jessee, L.D., & McMeen, J.N. (2025).** Nested and island models for determining the species-area relationship of southern Appalachian amphibians. *Journal of North American Herpetology*, 2025(1), 1–7. [https://doi.org/10.17161/jnah.v2025i1.21974](https://doi.org/10.17161/jnah.v2025i1.21974)
 
 ## About the Paper
 
