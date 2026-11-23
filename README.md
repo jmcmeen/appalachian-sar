@@ -1,5 +1,7 @@
 # Species-Area Relationships of Amphibians in the Southern Appalachians
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24454362.svg)](https://doi.org/10.5281/zenodo.24454362)
+
 Artifacts and updated analyses from:
 
 > **Stout, J.B., Jessee, L.D., & McMeen, J.N. (2025).** Nested and island models for determining the species-area relationship of southern Appalachian amphibians. *Journal of North American Herpetology*, 2025(1), 1–7. [https://doi.org/10.17161/jnah.v2025i1.21974](https://doi.org/10.17161/jnah.v2025i1.21974)
@@ -85,3 +87,13 @@ jupyter notebook analysis.ipynb
 ```
 
 The updated analysis requires the [`sars`](https://pypi.org/project/sars/) library (included in `requirements.txt`).
+
+## How to cite
+
+Please cite the original paper, and this archive if you use its data or analyses:
+
+> Stout, J.B., Jessee, L.D., & McMeen, J.N. (2025). Nested and island models for determining the species-area relationship of southern Appalachian amphibians. *Journal of North American Herpetology*, 2025(1), 1–7. https://doi.org/10.17161/jnah.v2025i1.21974
+
+> Stout, J.B., Jessee, L.D., & McMeen, J.N. (2026). appalachian-sar: data and reanalysis for Stout, Jessee & McMeen (2025). Zenodo. https://doi.org/10.5281/zenodo.24454362
+
+The DOI above always resolves to the latest version; each release also has its own DOI on Zenodo. GitHub's "Cite this repository" button gives the same in other formats.

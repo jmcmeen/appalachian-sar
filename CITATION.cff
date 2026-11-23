@@ -18,6 +18,7 @@ abstract: >-
   including multi-model comparison, model averaging, bootstrap intervals and
   threshold analysis.
 version: 1.0.0
+doi: 10.5281/zenodo.24454362
 license: MIT
 repository-code: "https://github.com/jmcmeen/appalachian-sar"
 keywords:
