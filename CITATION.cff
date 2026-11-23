@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use these data or this reanalysis, please cite the original paper (below) and this archive."
+title: "appalachian-sar: data and reanalysis for Stout, Jessee & McMeen (2025), nested and island species-area models for southern Appalachian amphibians"
+type: software
+authors:
+  - family-names: Stout
+    given-names: Jeremy B.
+  - family-names: Jessee
+    given-names: Lance D.
+  - family-names: McMeen
+    given-names: John N.
+    orcid: "https://orcid.org/0009-0003-8141-567X"
+abstract: >-
+  Data and analyses from Stout, Jessee & McMeen (2025): nested (7 areas) and
+  island (26 sites) species-area models for southern Appalachian amphibians,
+  frogs and salamanders, reproduced with the original log-linear regression
+  and refit by nonlinear least squares with the sars Python package,
+  including multi-model comparison, model averaging, bootstrap intervals and
+  threshold analysis.
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/jmcmeen/appalachian-sar"
+keywords:
+  - species-area relationship
+  - amphibians
+  - salamanders
+  - southern Appalachians
+references:
+  - type: article
+    title: "Nested and island models for determining the species-area relationship of southern Appalachian amphibians"
+    authors:
+      - family-names: Stout
+        given-names: Jeremy B.
+      - family-names: Jessee
+        given-names: Lance D.
+      - family-names: McMeen
+        given-names: John N.
+    journal: Journal of North American Herpetology
+    volume: 2025
+    issue: 1
+    start: 1
+    end: 7
+    year: 2025
+    doi: 10.17161/jnah.v2025i1.21974
