@@ -46,6 +46,6 @@ The file starts with a UTF-8 byte-order mark; `pandas.read_csv` handles it.
 
 ## Provenance
 
-Land areas are county or state land areas, or polygons digitised in Google Earth Pro (western Virginia, western North Carolina and northern Georgia), as described in the paper. Species counts and their sources are given in the paper's appendices:
+Land areas are county or state land areas, or polygons digitized in Google Earth Pro (western Virginia, western North Carolina and northern Georgia), as described in the paper. Species counts and their sources are given in the paper's appendices:
 
 > Stout, J.B., Jessee, L.D. & McMeen, J.N. (2025). Nested and island models for determining the species-area relationship of southern Appalachian amphibians. *Journal of North American Herpetology*, 2025(1), 1–7. https://doi.org/10.17161/jnah.v2025i1.21974

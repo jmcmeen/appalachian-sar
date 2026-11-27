@@ -44,11 +44,11 @@ This minimizes squared residuals in the original species-count scale and assumes
 
 ### Direction of Parameter Shifts
 
-For the nested model, the expected pattern is clear: NLS produces lower c and higher z in all three groups. The effect is dramatic for amphibians (c drops from 18.87 to 11.11, a 41% decrease; z rises from 0.1222 to 0.1779, a 46% increase) and for salamanders (c drops 36%; z rises 26%). For frogs the shift is more modest, consistent with the already-strong log-linear fit.
+For the nested model, the expected pattern is clear: NLS produces lower c and higher z in all three groups. The effect is dramatic for amphibians (c drops from 18.87 to 11.11, a 41% decrease; z rises from 0.1222 to 0.1779, a 46% increase) and for salamanders (c drops 36%; z rises 26%). For frogs c drops less (12%), though z rises as much as for salamanders (26%).
 
-For the island model, the shift direction is **not uniform**. Amphibians and salamanders follow the expected pattern (lower c, higher z), but frogs go the opposite way: NLS produces higher c (4.98 vs. 4.28) and lower z (0.1094 vs. 0.1338). This reversal is driven by the high scatter in the frog data and the influence of outlier sites — particularly the UT Arboretum (1.01 km², 9 frogs), which has unusually high frog richness for its size and exerts strong leverage in log-space.
+For the island model, the shift direction is **not uniform**. Amphibians and salamanders follow the expected pattern (lower c, higher z), but frogs go the opposite way: NLS produces higher c (4.98 vs. 4.28) and lower z (0.1094 vs. 0.1338). This reversal comes from one site. John's Bog (0.0081 km², 1 frog), the smallest site, has the highest leverage in log-space, and dropping it is the only single deletion that removes the reversal (the log-linear z falls to 0.096, below the NLS z of 0.102). Dropping the UT Arboretum (1.01 km², 9 frogs), rich in frogs for its size, leaves it in place.
 
-The original R² values are unadjusted R² in log-space (the paper reports R² from `linregress`, not adjusted R²), while the `sars` values are unadjusted R² in arithmetic space. These are not directly comparable. In several cases, the NLS R² is slightly lower than the log-linear R² despite NLS producing a visually better fit — this is expected because NLS minimizes absolute residuals rather than proportional ones, and R² in arithmetic space penalizes large-area misfit more heavily.
+The original R² values are unadjusted R² in log-space (the paper reports R² from `linregress`, not adjusted R²), while the `sars` values are unadjusted R² in arithmetic space. These are not directly comparable. In two cases (island amphibians and island frogs), the NLS R² is slightly lower than the log-linear R² despite NLS producing a visually better fit — this is expected because NLS minimizes squared residuals in species rather than in log species, and R² in arithmetic space penalizes large-area misfit more heavily.
 
 ## z-Value Interpretation
 
@@ -62,7 +62,7 @@ Canonical z-value ranges from Rosenzweig (1995) and Drakare et al. (2006) are 0.
 | Frogs       | 0.0598       | 0.0753  | Below canonical range       |
 | Salamanders | 0.1734       | 0.2192  | NLS pushes above 0.20       |
 
-The nested model's z-values are broadly consistent with the mainland/nested range, as expected from the concentric sampling design (wetland pond ⊂ Steele Creek Park ⊂ Sullivan Co. ⊂ NE Tennessee ⊂ Eastern Tennessee ⊂ broader southern Appalachia). The frog z is notably low under both methods, reflecting the relatively flat frog richness across scales — frog diversity saturates quickly and adds few species even as area increases by orders of magnitude. Salamander z under NLS (0.2192) exceeds the canonical mainland ceiling of 0.20, approaching true-island territory. This likely reflects the strong elevational partitioning and high endemism among plethodontid salamanders, which makes even nested areas behave somewhat like ecological islands for this group.
+The nested model's z-values are broadly consistent with the mainland/nested range, as expected from the concentric sampling design (wetland pond ⊂ Steele Creek Park ⊂ Sullivan Co. ⊂ NE Tennessee ⊂ Eastern Tennessee ⊂ Eastern Tennessee with western North Carolina and western Virginia ⊂ southern Appalachia). The frog z is notably low under both methods, reflecting the relatively flat frog richness across scales — frog diversity saturates quickly and adds few species even as area increases by orders of magnitude. Salamander z under NLS (0.2192) exceeds the canonical mainland ceiling of 0.20, approaching true-island territory. This likely reflects the strong elevational partitioning and high endemism among plethodontid salamanders, which makes even nested areas behave somewhat like ecological islands for this group.
 
 ### Island Model
 
@@ -78,11 +78,11 @@ All island z-values fall within the mainland/nested range under both methods. Th
 
 The most analytically significant finding for the island dataset is the **weak power-model fit for salamanders** (NLS R² = 0.58). Examining the data reveals two patterns driving this:
 
-1. **Outlier counties with suppressed richness.** Whitfield Co., GA (753.69 km², 8 salamanders) and Fannin Co., GA (1,015 km², 11 salamanders) have dramatically fewer salamanders than other areas of comparable size. Both are Georgia counties at the southern edge of the study area, where salamander diversity drops off due to physiographic and climatic transitions. These pull the power curve downward at intermediate scales.
+1. **Outlier counties with suppressed richness.** Whitfield Co., GA (753.69 km², 8 salamanders) and Fannin Co., GA (1,015 km², 11 salamanders) have dramatically fewer salamanders than other areas of comparable size. Both are Georgia counties at the southern edge of the study area, where salamander diversity drops off due to physiographic and climatic transitions. These pull the power curve downward near the upper end of the island range.
 
-2. **Exceptionally rich small sites.** Elk Knob SP (17.9 km², 13 salamanders) and Gorges SP (31.2 km², 14 salamanders) are montane parks with high salamander diversity relative to their size, reflecting the concentration of plethodontids in moist, high-elevation habitats.
+2. **Sites richer than the curve.** The largest positive residuals are at Great Smokies NP (33 salamanders, 10.4 above the power curve) and Sevier Co., TN (28, 6.3 above), and among small sites at John's Bog (0.0081 km², 9 salamanders, 5.0 above), reflecting the concentration of plethodontids in moist, high-elevation habitats. The montane parks Elk Knob SP (17.9 km², 13 salamanders) and Gorges SP (31.2 km², 14 salamanders) are only 1.3 and 1.4 above it.
 
-Together, these produce a dataset that is poorly fit by any single monotonic curve. The linear model (R² = 0.6519) actually outperforms the power model (R² = 0.5812) for island salamanders by AIC and BIC, suggesting that the area–richness relationship for salamanders at this spatial scale is better approximated by a simple linear trend than by any concave power function.
+Together, these produce a dataset that a power curve fits poorly. The linear model (R² = 0.6519) actually outperforms the power model (R² = 0.5812) for island salamanders by AIC and BIC, suggesting that the area–richness relationship for salamanders at this spatial scale is better approximated by a simple linear trend than by any concave power function.
 
 This contrasts sharply with the nested model, where salamanders show the strongest power fit of any group (R² = 0.9951). The difference illustrates a key methodological point: the nested design, by using concentric areas that share species pools, eliminates between-site habitat variability and produces cleaner area–richness curves. The island model, using independent sites, exposes the ecological noise that habitat heterogeneity, edge effects, and geographic position introduce.
 
@@ -96,19 +96,19 @@ With n = 26 (island), AICc is well-defined for all models, and model averaging i
 
 ### Nested Rankings
 
-For all three nested groups, the power model provides an excellent fit (R² = 0.93–0.995). Which model ranks first depends on the criterion. By AICc, the power model leads for frogs and salamanders, and the three-parameter epm1 for amphibians (R² = 0.998 against the power model's 0.983). By BIC, whose penalty for an extra parameter is much smaller than AICc's at n = 7 (about 2 against about 14), epm1 leads for all three groups, by a wide margin. The choice between them is a choice of penalty: on 7 points, a third parameter raises R² only slightly (to 0.988–0.999), and AICc's small-sample correction, designed for exactly this case, judges that not worth it except for amphibians. The 2-parameter power model is the more defensible choice for frogs and salamanders, and the evidence for amphibians is split.
+For all three nested groups, the power model provides an excellent fit (R² = 0.93–0.995). Which model ranks first depends on the criterion. By AICc, the power model leads for frogs and salamanders, and the three-parameter epm1 for amphibians (R² = 0.998 against the power model's 0.983). By BIC, whose penalty for an extra parameter is much smaller than AICc's at n = 7 (about 2 against about 14), epm1 leads for all three groups: by a wide margin over the power model, though for frogs by only 1.0 over powerR. The choice between them is a choice of penalty: on 7 points, a third parameter raises R² only slightly for amphibians and salamanders (to 0.998 and 0.999; for frogs, from 0.928 to 0.988), and AICc's small-sample correction, designed for exactly this case, judges that not worth it except for amphibians. The 2-parameter power model is the more defensible choice for frogs and salamanders, and the evidence for amphibians is split.
 
 ### Island Rankings
 
 For island **amphibians**, the linear model (R² = 0.7360, BIC = 164.86) and power model (R² = 0.7253, BIC = 165.89) perform nearly identically. The powerR model (R² = 0.7492) provides marginal improvement with a third parameter.
 
-For island **frogs**, the power model dominates (R² = 0.6549, BIC = 115.43). The logarithmic model is a close second (R² = 0.6418, BIC = 116.40). The linear model performs poorly (R² = 0.5198).
+For island **frogs**, the power model ranks first (R² = 0.6549, BIC = 115.43). The logarithmic model is a close second (R² = 0.6418, BIC = 116.40). The linear model performs poorly (R² = 0.5198).
 
 For island **salamanders**, the linear model (R² = 0.6519, BIC = 157.83) outperforms the power model (R² = 0.5812, BIC = 162.65). This is the most striking departure from the standard SAR framework and is discussed in the salamander anomaly section above.
 
 ## Threshold Analysis
 
-`sars.sar_threshold()` tests for breakpoints (small-island effect) by comparing continuous two-slope (ContOne), left-horizontal + right slope (ZslopeOne), and simple linear (no breakpoint) models.
+`sars.sar_threshold()` tests for breakpoints (small-island effect) by comparing continuous two-slope (ContOne), left-horizontal + right slope (ZslopeOne), and simple linear (no breakpoint) models. Its simple linear model is a straight line in ln(area), which is the logarithmic model of the rankings above, not their linear model (a straight line in area).
 
 ### Nested
 
@@ -134,7 +134,7 @@ Not every group's weights are dominated by a single model, and the weights depen
 | Frogs | power 0.51, epm1 0.27, powerR 0.16 | epm1 0.61, powerR 0.36, p2 0.01 |
 | Salamanders | power 0.91, epm1 0.07, powerR 0.01 | epm1 0.74, powerR 0.13, epm2 0.05 |
 
-The power model's BIC weight is 0.001–0.02. Two cases come close to a single model, salamanders under AICc (power 0.91) and amphibians under BIC (epm1 0.89), and they are different models. Where AICc and BIC disagree this sharply, the averaged curve depends on how hard extra parameters are penalised, so the nested averages should be treated as preliminary.
+The power model's BIC weight is 0.001–0.02. Two cases come close to a single model, salamanders under AICc (power 0.91) and amphibians under BIC (epm1 0.89), and they are different models. Where AICc and BIC disagree this sharply, the averaged curve depends on how hard extra parameters are penalized, so the nested averages should be treated as preliminary.
 
 ### Island (n = 26)
 
@@ -148,11 +148,11 @@ Model averaging and these intervals go beyond the original log-linear approach, 
 
 The paper's central comparison — nested vs. island models — reveals consistent patterns under both the original and NLS methods:
 
-1. **The nested model always produces higher c (baseline richness) and higher R² than the island model.** This is expected: the nested design eliminates between-site variability, and the largest nested areas encompass the species pools of all smaller areas.
+1. **The nested model always produces higher R² than the island model, and often a higher c (baseline richness).** The higher R² is expected: the nested design eliminates between-site variability, and the largest nested areas encompass the species pools of all smaller areas. The nested c is higher for frogs under both methods and for amphibians under the original method; for salamanders under both methods, and for amphibians under NLS, the island c is higher.
 
 2. **The z-values differ between models in group-specific ways.** For amphibians, the nested z is higher (0.1779 vs. 0.1272), indicating steeper scaling — the concentric areas capture species turnover more efficiently. For salamanders, nested z is also higher (0.2192 vs. 0.1383). For frogs, the pattern reverses: nested z (0.0753) is lower than island z (0.1094), driven by the high frog richness at the smallest nested site (a wetland pond with 7 frog species at 0.0018 km²), which anchors the low end of the curve and flattens the slope.
 
-3. **The paper's recommendation to average the two models for practical prediction remains sound under NLS.** The nested model over-predicts (reflecting maximum regional diversity) while the island model under-predicts (reflecting observational gaps at individual sites). Their average provides a reasonable estimate at most spatial scales.
+3. **The paper's recommendation to average the two models for practical prediction remains sound under NLS.** Across the areas the island sites cover (up to 2,114 km²), the nested model under the original method predicts more than the island model (reflecting maximum regional diversity against observational gaps at individual sites), except for salamanders below about 3 km². Under NLS the two curves cross within that range, near 18 km² for amphibians and 120 km² for salamanders: the nested model predicts more above the crossing and less below it, and for frogs it predicts more throughout. Their average lies between the two at every scale.
 
 ## Recommendations for Further Work
 
@@ -168,15 +168,15 @@ The paper's central comparison — nested vs. island models — reveals consiste
 
 ## Summary of Key Findings
 
-1. The NLS fitting method in `sars` produces systematically lower c and higher z values for the nested model, as expected from the different error assumptions. The direction of shift is not uniform for the island model, where the frog group reverses due to outlier leverage.
+1. The NLS fitting method in `sars` produces systematically lower c and higher z values for the nested model, as expected from the different error assumptions. The direction of shift is not uniform for the island model, where the frog group reverses because of one small site (John's Bog).
 
-2. The qualitative conclusions of the original publication are fully supported: both nested and island models show that land area is a significant predictor of amphibian species richness in the southern Appalachians.
+2. The qualitative conclusions of the original publication are fully supported: both nested and island models show that land area is a significant predictor of amphibian species richness in the southern Appalachians (log-linear regressions, all p < 0.001).
 
-3. The nested model provides excellent power-law fits (R² = 0.93–0.99 across groups under NLS), confirming the strength of the concentric sampling design. The island model produces weaker but still significant fits (R² = 0.58–0.73).
+3. The nested model provides excellent power-law fits (R² = 0.93–0.99 across groups under NLS), confirming the strength of the concentric sampling design. The island model produces weaker fits (R² = 0.58–0.73).
 
-4. Island salamander richness is better described by a linear model (R² = 0.65) than by the power model (R² = 0.58), driven by geographic outliers at the southern edge of the study area and exceptionally rich montane sites.
+4. Island salamander richness is better described by a linear model (R² = 0.65) than by the power model (R² = 0.58), driven by two Georgia counties at the southern edge of the study area that fall far below the curve and by the richest large sites (Great Smokies NP, Sevier Co.) that rise above it.
 
-5. All z-values fall within or near the expected mainland/nested range (0.10–0.20), except for nested salamanders (NLS z = 0.22) which approach true-island values — consistent with the high endemism and elevational partitioning of plethodontid salamanders.
+5. Most z-values fall within the expected mainland/nested range (0.10–0.20). Nested frogs fall below it (0.060 and 0.075), and nested salamanders under NLS rise above it (z = 0.22), approaching true-island values — consistent with the high endemism and elevational partitioning of plethodontid salamanders.
 
 6. The island dataset (n = 26) supports AICc-based model averaging; its bootstrap intervals assume independent sites, which the data only partly satisfy, so they are likely too narrow. On the nested data (n = 7), the averaging weights change sharply between AICc and BIC.
 

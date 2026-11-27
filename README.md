@@ -44,7 +44,7 @@ Seven concentric areas of increasing size, each encompassing all smaller areas:
 | 3 | Sullivan County, TN | 1,114 | 38 | 13 | 25 |
 | 4 | Northeastern Tennessee | 4,137 | 44 | 13 | 31 |
 | 5 | Eastern Tennessee | 37,438 | 69 | 18 | 52 |
-| 6 | + W North Carolina + W Virginia | 101,271 | 88 | 20 | 68 |
+| 6 | + W North Carolina + western Virginia | 101,271 | 88 | 20 | 68 |
 | 7 | Southern Appalachia | 178,758 | 98 | 22 | 76 |
 
 ### Island Model (Appendix 2)
